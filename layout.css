@@ -1,0 +1,88 @@
+.cornerDiv{
+    background-color: #808080;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 70px;
+    width: 103px;
+}
+
+.sideBar{
+    background-color: #F00;
+    left: 0px;
+    width: 103px;
+    bottom: 23px;
+   top: 70px;
+    position: absolute;
+}
+
+.topBar{
+    background-color: #00F;
+    position: absolute;
+    top: 0px;
+    height: 70px;
+    left: 103px;
+    right: 0px;
+}
+
+.bottomBar{
+    background-color: #800080;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 31px;
+}
+
+.mainDiv{
+    background-color: white;
+    right: 0px;
+    position: absolute;
+    width: 1263px;
+    height: 540px;
+    top: 70px;
+}
+
+.options-panel{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+}
+
+.colourWell{
+display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 1px inset #808080;
+    margin: 5px;
+}
+
+.toolIcon{
+ float: right;
+    height: 18px;
+}
+
+.toolDiv{
+    display: inline-block;
+    height: 20px;
+    width: 60px;
+    border: 1px inset #808080;
+    margin: 5px;
+}
+
+.colourBarDiv{
+
+}
+
+.drawingAreaDiv{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+.canvas{
+    border: 1px solid black;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="height:100%;>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<link rel="stylesheet" type="text/css" href="paint.css">
+<script src="colourPicker.js"></script>
+</head>
+<body class="body">
+<canvas id="drawing" width="800"  height="800"></canvas>  //canvas element
+<script>
+    var colourPicker=new ColourPicker();   // create getCanvas element from constructor
+    document.body.appendChild(colourPicker.getElement());
+    var drawing=document.getElementById("drawing");   //get getCanvas element
+    var context= drawing.getContext("2d");   //either 2d or 3d
+    drawing.addEventListener("mousedown",onMouseDown);  //event listener always added to elements
+
+    function onMouseDown (event)
+    {
+        console.log(event);
+        context.moveTo(event.offsetX,event.offsetY);   //moves drawing tool to start position, doesnt draw a line
+        drawing.addEventListener("mousemove",onMouseMove);
+        drawing.addEventListener("mouseup",onMouseUp);
+    }
+
+    function onMouseMove (event)
+    {
+        context.lineTo(event.offsetX,event.offsetY);
+        context.stroke();
+    }
+
+    function onMouseUp (event)
+    {
+        drawing.removeEventListener("mousemove",onMouseMove);
+        drawing.removeEventListener("mouseup",onMouseUp);
+    }
+
+    function getMousePos (canvas, evt)
+    {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
