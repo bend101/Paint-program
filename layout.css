@@ -8,12 +8,24 @@
 }
 
 .sideBar{
-    background-color: #F00;
+    background-color: #363636;
     left: 0px;
     width: 103px;
-    bottom: 23px;
+    bottom: 66px;
    top: 70px;
     position: absolute;
+}
+
+.colourBarTitle
+{
+    display: inline-block;
+    color: white;
+    vertical-align: bottom;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 4px;
+    width: 75px;
+
 }
 
 .topBar{
@@ -31,7 +43,8 @@
     bottom: 0px;
     left: 0px;
     right: 0px;
-    height: 31px;
+    height: 66px;
+    background-image: url("images/bottomBar.png");
 }
 
 .mainDiv{
@@ -39,7 +52,7 @@
     right: 0px;
     position: absolute;
     width: 1263px;
-    height: 540px;
+    bottom: 66px;
     top: 70px;
 }
 
@@ -68,10 +81,14 @@ display: inline-block;
     width: 60px;
     border: 1px inset #808080;
     margin: 5px;
+    color: #CACACC;
+    margin-left: 19px;
 }
 
 .colourBarDiv{
-
+    height: 33px;
+    position: relative;
+    vertical-align: middle;
 }
 
 .drawingAreaDiv{
@@ -85,4 +102,18 @@ display: inline-block;
 
 .canvas{
     border: 1px solid black;
+}
+
+.toolHeader{
+    background-color: rgb(255, 138, 12);
+    text-align: center;
+}
+
+.slider{
+
+}
+
+.dropDownBox
+{
+    width: 50px;
 }

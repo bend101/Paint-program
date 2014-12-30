@@ -3,24 +3,43 @@ function ColourPicker (fnCallbackWhenColourChanges)
 	this.fnCallbackWhenColourChanges=fnCallbackWhenColourChanges;
 	this.topElement=document.createElement("div");
 	this.cssColourString="black";
+	this.rValue=00;
+	this.gValue=00;
+	this.bValue=00;
+	this.aValue=255;
 	this.canvas=document.createElement("canvas");
 	this.canvas.height=170;
 	this.canvas.width=170;
 	this.topElement.appendChild(this.canvas);
 	this.context = this.canvas.getContext("2d");
 	this.colourCircle = document.createElement("img");
-	this.colourCircle.src = "colours.png";
+	this.colourCircle.src = "images/colours.png";
 	this.colourCircle.style.visibility = "hidden";
 	this.canvas.appendChild(this.colourCircle);
 	this.context.strokeRect(38, 43, 74, 67);
 	this.smallDiv=document.createElement("div");
 	this.smallDiv.className="small-div";
+	this.smallDivColour=document.createElement("div");
+	this.smallDivColour.className="smallDivColour";
 	this.topElement.appendChild(this.smallDiv);
+	this.topElement.appendChild(this.smallDivColour);
+	this.slider=new Slider(147,this.onOpacityChange.bind(this));
+	this.slider.classname="slider";
+	this.topElement.appendChild(this.slider.getElement());
 	this.colourCircle.onload = function ()
 	{
 		this.context.drawImage(this.colourCircle, 0, 0);
 	}.bind(this);
 	this.canvas.addEventListener("click", this.onMouseClick.bind(this));
+}
+
+ColourPicker.prototype.onOpacityChange=function(percentage)
+{
+	var percentageSwapped=100-percentage;
+	this.aValue=percentageSwapped/100;
+
+	this.cssColourString=ColourPicker.rgbToString(this.rValue,this.gValue,this.bValue,this.aValue);
+	this.smallDivColour.style.backgroundColor=this.cssColourString;
 }
 
 ColourPicker.rgbToString=function(r,g,b,a)
@@ -42,8 +61,12 @@ ColourPicker.prototype.getSelectedColourString=function()
 {
 	var mousePos=this.getMousePos(this.canvas,event);
 	var imgData = this.context.getImageData(mousePos.x, mousePos.y, 1, 1).data;
-	this.cssColourString=ColourPicker.rgbToString(imgData[0],imgData[1],imgData[2],imgData[3]);
-	this.smallDiv.style.backgroundColor=this.cssColourString;
+	this.rValue=imgData[0];
+	this.gValue=imgData[1];
+	this.bValue=imgData[2];
+
+	this.cssColourString=ColourPicker.rgbToString(this.rValue,this.gValue,this.bValue,this.aValue);
+	this.smallDivColour.style.backgroundColor=this.cssColourString;
 	var hsl1=this.rgbToHsl(imgData[0],imgData[1],imgData[2]);
 	var hue=hsl1[0];
 	this.drawInnerSquareColours(hue);

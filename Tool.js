@@ -15,6 +15,7 @@ function Tool (name,image,cursor,fnToolChangeCallback,paintProgram)
 	this.toolDiv.appendChild(this.image);
 	this.toolDiv.addEventListener("click",this.onToolClick.bind(this));
 
+
 }
 
 Tool.prototype.getName=function()

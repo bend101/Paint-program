@@ -1,11 +1,16 @@
-function ColourBar(colourArray,fnColourChangeListener)
+function ColourBar(title,colourArray)
 {
 	this.colourArray=colourArray;
-	this.colourChangeListener=fnColourChangeListener;
+	this.title=title;
+
 	this.selectedWell=null;
 
 	this.colourBarDiv=document.createElement("div");
 	this.colourBarDiv.className="colourBarDiv";
+	var title=document.createElement("span");
+	title.innerHTML=this.title;
+	title.className="colourBarTitle";
+	this.colourBarDiv.appendChild(title);
 	for (var i=0;i<this.colourArray.length;i++)
 	{
 		var colourWell=new ColourWell(this.colourArray[i],this.onColourWellClicked.bind(this));
@@ -14,14 +19,12 @@ function ColourBar(colourArray,fnColourChangeListener)
 		{
 			this.select(colourWell);
 		}
-
 	}
-
 }
 
 ColourBar.prototype.onColourWellClicked=function(colour,colourWell)
 {
-
+	this.colour=colour;
 	this.select(colourWell);
 }
 
@@ -32,7 +35,7 @@ ColourBar.prototype.getElement=function()
 
 ColourBar.prototype.select=function(colourWell)
 {
-	this.colourChangeListener(colourWell.getColour());
+
 	if (this.selectedWell!==null)   //if there is a selected cell
 	{
 		this.selectedWell.setSelected(false);

@@ -5,11 +5,11 @@ function Sidebar (fnOnChangeInTool, paintProgram)
 	this.paintProgram=paintProgram;
 	this.selectedTool=null;
 
-	var tool=new DrawTool("Draw", "pencil.png", "pencilCursor.png",this.onToolChange.bind(this),this.paintProgram);
+	var tool=new DrawTool("Draw", "images/pencil.png", "images/pencilCursor.png",this.onToolChange.bind(this),this.paintProgram);
 	this.sideBarDiv.appendChild(tool.getElement());
 	this.select(tool);
 
-	tool=new FillTool("Fill", "cross.png", "cross.png",this.onToolChange.bind(this),this.paintProgram);
+	tool=new ShapeTool("Shape", "images/cross.png", "images/cross.png",this.onToolChange.bind(this),this.paintProgram);
 	this.sideBarDiv.appendChild(tool.getElement());
 
 }

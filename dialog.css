@@ -21,7 +21,7 @@
     width: 100%;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
-    background-image: url(topDiv.png);
+    background-image: url(images/topDiv.png);
     border-bottom: 1px solid #aaa;
     border-top: 1px solid #aaa;
 }
@@ -51,14 +51,14 @@
     height: 17px;
     margin-top: 5px;
     margin-right: 9px;
-    background-image: url('dialogExit.png');
+    background-image: url('images/dialogExit.png');
     background-repeat:no-repeat;
     width: 18px;
     border: 1px none;
 }
 
 .dialog-exitButton:active{
-    background-image: url('dialogExitClicked.png');
+    background-image: url('images/dialogExitClicked.png');
 }
 
 .dialog-headerText{
@@ -105,14 +105,14 @@
 }
 
 .common-button{
-    background-image: url("backgroundButton.png");
+    background-image: url("images/backgroundButton.png");
     border-radius: 11px;
     box-shadow: 0px 2px 3px #888;
     border: 1px;
     /*height:20px;*/
 }
 .common-button:active {
-    background-image: url('onClick.png');
+    background-image: url('images/onClick.png');
 }
 
 .small-div{
@@ -122,5 +122,18 @@
     left: 130px;
     position: absolute;
     border: 1px solid;
+    background-image: url("images/checkedBoard.png");
+
+}
+
+.smallDivColour{
+    height:20px;
+    width: 20px;
+    top: 127px;
+    left: 130px;
+    position: absolute;
+    border: 1px solid;
+    z-index: 10;
+
 
 }
