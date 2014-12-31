@@ -1,5 +1,4 @@
 # pass through colour to dialog
-# use foreground and background in stroke and fill
 # different shapes
-# double-buffering
 # use more innerhtml in options
+# checkerboard background for colourwell

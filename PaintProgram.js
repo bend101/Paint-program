@@ -57,6 +57,17 @@ PaintProgram.prototype.getCanvas=function()
 return this.drawingArea.getCanvas();
 }
 
+PaintProgram.prototype.copyToBackgroundCanvas=function()
+{
+
+	this.drawingArea.copyToBackgroundCanvas();
+}
+
+PaintProgram.prototype.copyToForegroundCanvas=function()
+{
+	this.drawingArea.copyToForegroundCanvas();
+}
+
 
 
 
