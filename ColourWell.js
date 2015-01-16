@@ -1,27 +1,38 @@
-function ColourWell(colour,fnColourChangeCallback)
+function ColourWell(coloursObject,fnColourChangeCallback)
 {
-	this.colour=colour;
+	this.colourObject=coloursObject;
+	this.colour=this.colourObject.convertToString();
 	this.fnColourChangeCallBack=fnColourChangeCallback;
+	this.checkeredDiv=document.createElement("div");
+	this.checkeredDiv.className="checkeredDiv";
+
+
+	this.containingDiv=document.createElement("div");
+	this.containingDiv.className="containingDivColourWell";
+	this.containingDiv.appendChild(this.checkeredDiv);
+
 	this.colourWellDiv=document.createElement("div");
 	this.colourWellDiv.className="colourWell";
-	this.colourWellDiv.style.backgroundColor=colour;
+	this.colourWellDiv.style.backgroundColor=coloursObject.convertToString();
+	this.containingDiv.appendChild(this.colourWellDiv);
 	this.colourWellDiv.addEventListener("click",this.onClick.bind(this));
 	this.colourWellDiv.addEventListener("dblclick",this.onColourWellDoubleClick.bind(this));
 }
 
 ColourWell.prototype.onClick=function(event)
 {
-	this.fnColourChangeCallBack(this.colour, this);
+	console.log(this.colourObject);
+	this.fnColourChangeCallBack(this.colourObject, this);
 }
 ColourWell.prototype.getColour=function()
 {
-	return this.colour;
+	return this.colourObject;
 }
 
 
 ColourWell.prototype.getElement=function()
 {
-	return this.colourWellDiv;
+	return this.containingDiv;
 }
 
 ColourWell.prototype.setSelected=function(selected)
@@ -39,7 +50,7 @@ ColourWell.prototype.setSelected=function(selected)
 ColourWell.prototype.onColourWellDoubleClick=function()
 {
 	console.log("hello");
-	var dialog=new ColourPickerDialog(this.onDialogClose.bind(this));
+	var dialog=new ColourPickerDialog(this.onDialogClose.bind(this),this.colourObject);
 //	document.body.appendChild(dialog);
 }
 
@@ -47,8 +58,8 @@ ColourWell.prototype.onDialogClose=function(dialog,returnCode)
 {
 	if(returnCode===Dialog.OK)
 	{
-		this.colour=dialog.getColourString();
-		this.colourWellDiv.style.backgroundColor=this.colour;
+		this.colour=dialog.getColourObject();
+		this.colourWellDiv.style.backgroundColor=this.colour.convertToString();
 
 		this.fnColourChangeCallBack(this.colour, this);
 	}

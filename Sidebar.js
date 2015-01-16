@@ -9,7 +9,13 @@ function Sidebar (fnOnChangeInTool, paintProgram)
 	this.sideBarDiv.appendChild(tool.getElement());
 	this.select(tool);
 
-	tool=new ShapeTool("Shape", "images/cross.png", "images/cross.png",this.onToolChange.bind(this),this.paintProgram);
+	tool=new ShapeTool("Shape", "images/shapes.png", "images/cross.png",this.onToolChange.bind(this),this.paintProgram);
+	this.sideBarDiv.appendChild(tool.getElement());
+
+	tool=new SpecialEffectsTool("Special Effects", "images/fxEffects.png", "images/pencilCursor.png",this.onToolChange.bind(this),this.paintProgram);
+	this.sideBarDiv.appendChild(tool.getElement());
+
+	tool=new TextTool("Text", "images/text.png", null,this.onToolChange.bind(this),this.paintProgram);
 	this.sideBarDiv.appendChild(tool.getElement());
 
 }

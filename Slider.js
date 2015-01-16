@@ -4,10 +4,15 @@
  * @param fnToSayChangedValue optional function to callback when value changes
  * @constructor
  */
-function Slider(height, fnToSayChangedValue)
+function Slider(height, fnToSayChangedValue,colourObject)
 {
 
 	this.fnChangedValue=fnToSayChangedValue;
+	this.colourObject=colourObject;
+	this.colourObjectAValue=this.colourObject.a;
+	console.log(this.colourObjectAValue);
+
+
 
 
 	this.line=document.createElement("div");
@@ -18,11 +23,13 @@ function Slider(height, fnToSayChangedValue)
 	this.circle.className="circle";
 	this.line.appendChild(this.circle);
 	this.circle.addEventListener("mousedown",this.onMouseDown.bind(this));
-	this.percentage=0;
+
+	this.setPercentage((1-this.colourObjectAValue)*100);
 }
 
 Slider.prototype.setPercentage=function(percentage)
 {
+
 	this.percentage=percentage;
 	var percentage=percentage/100;
 	var lineHeight=this.lineHeight-20;
@@ -84,6 +91,7 @@ Slider.prototype.onMouseMove=function(event)
 	var percentage=value*100;
 	if (percentage!==this.percentage && this.fnChangedValue!=null)
 	{
+		console.log(percentage);
 		this.fnChangedValue(percentage);
 	}
 	this.percentage=percentage;

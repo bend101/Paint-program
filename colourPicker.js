@@ -1,12 +1,17 @@
-function ColourPicker (fnCallbackWhenColourChanges)
+/**
+ *
+ * @param fnCallbackWhenColourChanges call back when color changes
+ * @param colourObject a Color object
+ * @constructor
+ */
+function ColourPicker (fnCallbackWhenColourChanges, colourObject)
 {
 	this.fnCallbackWhenColourChanges=fnCallbackWhenColourChanges;
+	this.colourObject=colourObject;
+
+	var cssColourString=colourObject.convertToString();
+
 	this.topElement=document.createElement("div");
-	this.cssColourString="black";
-	this.rValue=00;
-	this.gValue=00;
-	this.bValue=00;
-	this.aValue=255;
 	this.canvas=document.createElement("canvas");
 	this.canvas.height=170;
 	this.canvas.width=170;
@@ -21,9 +26,10 @@ function ColourPicker (fnCallbackWhenColourChanges)
 	this.smallDiv.className="small-div";
 	this.smallDivColour=document.createElement("div");
 	this.smallDivColour.className="smallDivColour";
+	this.smallDivColour.style.backgroundColor=cssColourString;
 	this.topElement.appendChild(this.smallDiv);
 	this.topElement.appendChild(this.smallDivColour);
-	this.slider=new Slider(147,this.onOpacityChange.bind(this));
+	this.slider=new Slider(147,this.onOpacityChange.bind(this),this.colourObject);
 	this.slider.classname="slider";
 	this.topElement.appendChild(this.slider.getElement());
 	this.colourCircle.onload = function ()
@@ -31,48 +37,55 @@ function ColourPicker (fnCallbackWhenColourChanges)
 		this.context.drawImage(this.colourCircle, 0, 0);
 	}.bind(this);
 	this.canvas.addEventListener("click", this.onMouseClick.bind(this));
+
+	var hsl1=this.rgbToHsl(this.colourObject.r,this.colourObject.g,this.colourObject.b);
+	var hue=hsl1[0];
+	this.drawInnerSquareColours(hue);
 }
 
+/**
+ * sets the opacity between 0 - 100
+ * @param percentage 0 to 100
+ */
 ColourPicker.prototype.onOpacityChange=function(percentage)
 {
 	var percentageSwapped=100-percentage;
-	this.aValue=percentageSwapped/100;
-
-	this.cssColourString=ColourPicker.rgbToString(this.rValue,this.gValue,this.bValue,this.aValue);
-	this.smallDivColour.style.backgroundColor=this.cssColourString;
+	var percentageAsDecimal=percentageSwapped/100;
+	this.colourObject.a=percentageAsDecimal;
+	this.smallDivColour.style.backgroundColor=this.colourObject.convertToString();
 }
-
-ColourPicker.rgbToString=function(r,g,b,a)
-{
-	return "rgba("+r+","+g+","+b+","+a+")";
-}
+//
+//ColourPicker.rgbToString=function(r,g,b,a)
+//{
+//	return "rgba("+r+","+g+","+b+","+a+")";
+//}
 
 ColourPicker.prototype.getElement=function()
 {
 	return this.topElement;
 }
 
-ColourPicker.prototype.getSelectedColourString=function()
+ColourPicker.prototype.getSelectedColour=function()
 {
-	return this.cssColourString;
+	return this.colourObject;
 }
 
  ColourPicker.prototype.onMouseClick=function(event)
 {
 	var mousePos=this.getMousePos(this.canvas,event);
 	var imgData = this.context.getImageData(mousePos.x, mousePos.y, 1, 1).data;
-	this.rValue=imgData[0];
-	this.gValue=imgData[1];
-	this.bValue=imgData[2];
+	this.colourObject.r=imgData[0];
+	this.colourObject.g=imgData[1];
+	this.colourObject.b=imgData[2];
 
-	this.cssColourString=ColourPicker.rgbToString(this.rValue,this.gValue,this.bValue,this.aValue);
-	this.smallDivColour.style.backgroundColor=this.cssColourString;
+	var cssColourString=this.colourObject.convertToString();
+	this.smallDivColour.style.backgroundColor=cssColourString;
 	var hsl1=this.rgbToHsl(imgData[0],imgData[1],imgData[2]);
 	var hue=hsl1[0];
 	this.drawInnerSquareColours(hue);
 	if (this.fnCallbackWhenColourChanges!=null)
 	{
-		this.fnCallbackWhenColourChanges(this.cssColourString);
+		this.fnCallbackWhenColourChanges(this.colourObject);
 	}
 }
 
@@ -96,7 +109,6 @@ ColourPicker.prototype.drawInnerSquareColours=function(hue)
 			squareData[pixelPosition + 1] = rgb[1];
 			squareData[pixelPosition + 2] = rgb[2];
 			squareData[pixelPosition+3]=255;
-
 		}
 	}
 	this.context.putImageData(squareImage, 38, 43);

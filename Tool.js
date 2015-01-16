@@ -7,8 +7,8 @@ function Tool (name,image,cursor,fnToolChangeCallback,paintProgram)
 	this.fnToolChangeCallback=fnToolChangeCallback;
 	this.toolDiv=document.createElement("div");
 	this.toolDiv.className="toolDiv";
-	this.text=document.createTextNode(name);
-	this.toolDiv.appendChild(this.text);
+	this.strokeText=document.createTextNode(name);
+	this.toolDiv.appendChild(this.strokeText);
 	this.image=document.createElement("img");
 	this.image.src=image;
 	this.image.className="toolIcon";

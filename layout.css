@@ -1,11 +1,19 @@
 .cornerDiv{
-    background-color: #808080;
+    background-color: #545255;
     position: absolute;
     left: 0px;
     top: 0px;
     height: 70px;
     width: 103px;
 }
+
+.stroke-fill-span
+{
+    width: 45px;
+    display: inline-block;
+}
+
+
 
 .sideBar{
     background-color: #363636;
@@ -14,6 +22,30 @@
     bottom: 66px;
    top: 70px;
     position: absolute;
+}
+
+.undo-redo{
+    display: inline-block;
+    height: 20px;
+    width: 60px;
+    /*border: 1px inset #808080;*/
+    /*margin: 5px;*/
+    /*color: #CACACC;*/
+    margin-left: 19px;
+    margin-top: 2px;
+}
+
+.containerStrokeFill{
+    display: inline-block;
+    width: 76px;
+    margin-left: 6px;
+    height: 69px;
+    color: #CACACC;
+}
+
+.optionsImage{
+    position: absolute;
+    left: 103px;
 }
 
 .colourBarTitle
@@ -29,11 +61,11 @@
 }
 
 .topBar{
-    background-color: #00F;
+    background-color: #545255;
     position: absolute;
     top: 0px;
     height: 70px;
-    left: 103px;
+    left: 122px;
     right: 0px;
 }
 
@@ -67,7 +99,32 @@ display: inline-block;
     height: 20px;
     width: 20px;
     border: 1px inset #808080;
+    z-index: 1;
+    position: absolute;
+}
+
+.textDiv{
+    display:inline-block;
+    width: 201px;
+    height: 52px;
+    background-color: white;
+}
+
+.containingDivColourWell{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
     margin: 5px;
+}
+
+.checkeredDiv{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border: 1px inset #808080;
+    background-image: url("images/checkedBoard.png");
+    z-index: 0;
+    position: absolute;
 }
 
 .toolIcon{
@@ -77,13 +134,15 @@ display: inline-block;
 
 .toolDiv{
     display: inline-block;
-    height: 20px;
-    width: 60px;
+    /*height: 20px;*/
+    width: 67px;
     border: 1px inset #808080;
     margin: 5px;
     color: #CACACC;
-    margin-left: 19px;
+    margin-left: 16px;
 }
+
+
 
 .colourBarDiv{
     height: 33px;

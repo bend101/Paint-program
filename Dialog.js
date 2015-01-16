@@ -50,7 +50,7 @@ function Dialog (title, width, height, closeListener)
 	this.dialogDiv.style.left=(window.innerWidth/2)-(width/2)+"px";
 	this.dialogDiv.style.top=(window.innerHeight/2)-(height/2)+"px";
 	this.partialBorder=document.createElement("img");
-	this.partialBorder.src="otherImages/partialBorder.png";
+	this.partialBorder.src="images/partialBorder.png";
 	this.bottomDiv.appendChild(this.partialBorder);
 	this.partialBorder.className="dialog-partialBorder";
 	this.partialBorder.style.width=(this.bottomDiv.clientWidth-12)+"px";
