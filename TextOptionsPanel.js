@@ -76,9 +76,6 @@ function TextOptionsPanel(textTool)
 	this.rotationDropDownBox=this.containerDiv.querySelector("#Rotation");
 	this.addOptionsToSelect();
 	this.rotationDropDownBox.addEventListener("change",this.onRotationChange.bind(this));
-
-
-
 }
 
 TextOptionsPanel.prototype.addOptionsToSelect=function()
