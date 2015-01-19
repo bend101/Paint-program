@@ -9,8 +9,13 @@
 
 .stroke-fill-span
 {
-    width: 45px;
+    width: 68px;
     display: inline-block;
+}
+
+.fillSpan{
+    display: inline-block;
+    width: 29px;
 }
 
 
@@ -37,11 +42,14 @@
 
 .containerStrokeFill{
     display: inline-block;
-    width: 76px;
+    width: 88px;
     margin-left: 6px;
     height: 69px;
     color: #CACACC;
 }
+
+
+
 
 .optionsImage{
     position: absolute;
@@ -60,6 +68,42 @@
 
 }
 
+.containerLineWidth{
+    display: inline-block;
+    width: 135px;
+    margin-left: 6px;
+    height: 69px;
+    color: #CACACC;
+    vertical-align: middle;
+    padding-top: 17px;
+}
+
+.newContainerDiv{
+
+}
+
+.transparentCheckBox{
+    vertical-align: middle;
+}
+
+.inputNew{
+    width: 31px;
+}
+
+.newDiv{
+    margin-top: 6px;
+    margin-left: 4px;
+}
+
+.widthSpan{
+    margin-right: 8px;
+}
+
+.heightSpan{
+    margin-right: 4px;
+}
+
+
 .topBar{
     background-color: #545255;
     position: absolute;
@@ -67,6 +111,7 @@
     height: 70px;
     left: 122px;
     right: 0px;
+    color: #CACACC;
 }
 
 .bottomBar{
@@ -80,7 +125,7 @@
 }
 
 .mainDiv{
-    background-color: white;
+    background-color: #CFCFCF;
     right: 0px;
     position: absolute;
     width: 1263px;
@@ -108,6 +153,23 @@ display: inline-block;
     width: 201px;
     height: 52px;
     background-color: white;
+}
+
+.containerRectangleCircle{
+    display: inline-block;
+    width: 91px;
+    margin-left: 6px;
+    height: 69px;
+    color: #CACACC;
+}
+.containerFill {
+    display: inline-block;
+    width: 91px;
+    margin-left: 6px;
+    height: 69px;
+    color: #CACACC;
+    vertical-align: middle;
+    padding-top: 12px;
 }
 
 .containingDivColourWell{
@@ -161,6 +223,17 @@ display: inline-block;
 
 .canvas{
     border: 1px solid black;
+    z-index: 10;
+    position: absolute;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+.behindCanvas{
+    border: 1px solid black;
+    z-index: 0;
+    background-image: url("images/checkedBoard1.png");
+    position: absolute;
+
 }
 
 .toolHeader{

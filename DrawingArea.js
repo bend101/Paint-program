@@ -7,17 +7,51 @@ function DrawingArea(paintProgram)
 
 DrawingArea.prototype.createCanvas=function(width,height)
 {
+	this.behindCanvas=document.createElement("div");
+	this.behindCanvas.style.width=width+"px";
+	this.behindCanvas.style.height=height+"px";
+	this.behindCanvas.className="behindCanvas";
+
 	this.canvas=document.createElement("canvas");
 	this.canvas.className="canvas";
 	this.canvas.width=width;
 	this.canvas.height=height;
+
 
 	this.backgroundCanvas=document.createElement("canvas");
 	this.backgroundCanvas.className="backgroundCanvas";
 	this.backgroundCanvas.width=width;
 	this.backgroundCanvas.height=height;
 
+	this.drawingAreaDiv.appendChild(this.behindCanvas);
 	this.drawingAreaDiv.appendChild(this.canvas);
+
+}
+
+DrawingArea.prototype.resizeCanvas=function(width,height,transparent)
+{
+
+		this.behindCanvas.style.width = width + "px";
+		this.behindCanvas.style.height = height + "px";
+
+		this.canvas.width = width;
+		this.canvas.height = height;
+
+		this.backgroundCanvas.width = width;
+		this.backgroundCanvas.height = height;
+	if (transparent===false)
+	{
+
+		var ctx=this.canvas.getContext("2d");
+		ctx.rect(0,0,width,height);
+		ctx.fillStyle="white";
+		ctx.fill();
+
+	}
+
+
+
+
 }
 
 DrawingArea.prototype.copyToBackgroundCanvas=function()

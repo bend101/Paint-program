@@ -5,9 +5,10 @@ function Sidebar (fnOnChangeInTool, paintProgram)
 	this.paintProgram=paintProgram;
 	this.selectedTool=null;
 
-	var tool=new DrawTool("Draw", "images/pencil.png", "images/pencilCursor.png",this.onToolChange.bind(this),this.paintProgram);
-	this.sideBarDiv.appendChild(tool.getElement());
-	this.select(tool);
+	this.drawTool=new DrawTool("Draw", "images/pencil.png", "images/pencilCursor.png",this.onToolChange.bind(this),this.paintProgram);
+	this.sideBarDiv.appendChild(this.drawTool.getElement());
+	this.select(this.drawTool);
+
 
 	tool=new ShapeTool("Shape", "images/shapes.png", "images/cross.png",this.onToolChange.bind(this),this.paintProgram);
 	this.sideBarDiv.appendChild(tool.getElement());
@@ -15,7 +16,7 @@ function Sidebar (fnOnChangeInTool, paintProgram)
 	tool=new SpecialEffectsTool("Special Effects", "images/fxEffects.png", "images/pencilCursor.png",this.onToolChange.bind(this),this.paintProgram);
 	this.sideBarDiv.appendChild(tool.getElement());
 
-	tool=new TextTool("Text", "images/text.png", null,this.onToolChange.bind(this),this.paintProgram);
+	tool=new TextTool("Text", "images/text.png", "text",this.onToolChange.bind(this),this.paintProgram);
 	this.sideBarDiv.appendChild(tool.getElement());
 
 }

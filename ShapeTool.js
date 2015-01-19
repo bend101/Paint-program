@@ -13,7 +13,7 @@ ShapeTool.prototype.getOptionsPanel=function()
 
 ShapeTool.prototype.dragStart=function(x,y)
 {
-	this.lineDrawable = new ShapeDrawable(x, y, this.optionsPanel.getLineWidth(), this.paintProgram.getForeGroundColour(), this.paintProgram.getBackgroundColour(), this.optionsPanel.isRect(), this.optionsPanel.isCircle());
+	this.lineDrawable = new ShapeDrawable(x, y, this.optionsPanel.getLineWidth(), this.paintProgram.getForeGroundColour(), this.paintProgram.getBackgroundColour(), this.optionsPanel.isRect(), this.optionsPanel.isCircle(), this.optionsPanel.isFill());
 
 	this.paintProgram.copyToBackgroundCanvas();
 }

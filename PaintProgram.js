@@ -1,12 +1,13 @@
 function PaintProgram()
 {
+	this.newCanvasDialog=new NewCanvasDialog(this.onNewDialogClose.bind(this));
 	this.bottomBar=document.querySelector(".bottomBar");
 	this.cornerDiv=document.querySelector(".cornerDiv");
 
 	this.leftSideBar=document.querySelector(".sideBar");
 	this.optionsArea=document.querySelector(".topBar");
-	this.colourBar= new ColourBar("Foreground",[new Colour(0,0,0,1),new Colour(255,0,0,1), new Colour(0,0,255,1),new Colour(0,128,0,1),new Colour(255,255,0,1),new Colour(255,165,0,1),new Colour(128,0,128,1),new Colour(255,192,203,1)]);
-	this.colourBarBackground= new ColourBar("Background",[new Colour(0,0,0,1),new Colour(255,0,0,1), new Colour(0,0,255,1),new Colour(0,128,0,1),new Colour(255,255,0,1),new Colour(255,165,0,1),new Colour(128,0,128,1),new Colour(255,192,203,1)]);
+	this.colourBar= new ColourBar("Foreground",[new Colour(0,0,0,1),new Colour(255,0,0,1), new Colour(0,0,255,1),new Colour(0,128,0,1),new Colour(255,255,0,1),new Colour(255,165,0,1),new Colour(128,0,128,1),new Colour(255,192,203,1),new Colour(255,255,255,1)]);
+	this.colourBarBackground= new ColourBar("Background",[new Colour(0,0,0,1),new Colour(255,0,0,1), new Colour(0,0,255,1),new Colour(0,128,0,1),new Colour(255,255,0,1),new Colour(255,165,0,1),new Colour(128,0,128,1),new Colour(255,192,203,1),new Colour(255,255,255,1)]);
 	this.drawingArea=new DrawingArea(this);
 	this.drawingArea.createCanvas(2000,2000);
 	this.toolHeader=document.createElement("div");
@@ -33,10 +34,12 @@ function PaintProgram()
 	this.newButton.className="undo-redo";
 	this.undoButton.addEventListener("click",this.onUndoClick.bind(this));
 	this.redoButton.addEventListener("click",this.onRedoClick.bind(this));
+	this.newButton.addEventListener("click",this.onNewClick.bind(this));
 	this.cornerDiv.appendChild(this.newButton);
 	this.cornerDiv.appendChild(this.undoButton);
 	this.cornerDiv.appendChild(this.redoButton);
 
+	this.transparent=true;
 
 	this.undoArray=[];
 	this.redoArray=[];
@@ -63,6 +66,28 @@ PaintProgram.prototype.onRedoClick=function(event)
 
 }
 
+PaintProgram.prototype.onNewClick=function(event)
+{
+	this.newCanvasDialog=new NewCanvasDialog(this.onNewDialogClose.bind(this));
+
+}
+
+PaintProgram.prototype.onNewDialogClose=function(dialog,returnCode)
+{
+	if(returnCode===Dialog.OK)
+	{
+		var width=dialog.widthValue();
+
+		var height=dialog.heightValue();
+		this.transparent=dialog.isTransparent();
+
+
+			this.drawingArea.resizeCanvas(width, height,this.transparent);
+			this.redoArray = [];
+			this.undoArray = [];
+	}
+
+}
 PaintProgram.prototype.undo=function()
 {
 	if (this.undoArray.length!==0)
@@ -92,6 +117,13 @@ PaintProgram.prototype.drawDrawable=function()
 {
 	var context=this.getCanvas().getContext('2d');
 	context.clearRect ( 0 , 0 , this.getCanvas().width, this.getCanvas().height );
+	if (this.transparent===false)
+	{
+		context.beginPath();
+		context.rect(0,0,this.getCanvas().width,this.getCanvas().height);
+		context.fillStyle="white";
+		context.fill();
+	}
 	for (var i=0;i<this.undoArray.length;i++)
 	{
 		console.log(i);

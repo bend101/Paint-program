@@ -9,8 +9,6 @@ function LineDrawable(startX,startY,lineWidth,foregroundColour,backgroundColour,
 	this.isStroke=isStroke;
 	this.isFill=isFill;
 	this.lineWidth=lineWidth;
-
-
 }
 
 LineDrawable.prototype.addToArray=function(x,y)
@@ -21,12 +19,10 @@ LineDrawable.prototype.addToArray=function(x,y)
 
 		};
 		this.shapeDrawableArray.push(lineObject);
-
 }
 
 LineDrawable.prototype.draw=function(canvas)
 {
-
 	var context=canvas.getContext('2d');
 	context.beginPath();
 	context.moveTo(this.startX,this.startY);

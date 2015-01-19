@@ -111,7 +111,6 @@ Dialog.prototype.onCancel=function()
 
 Dialog.prototype.onOK=function()
 {
-
 	document.body.removeChild(this.dialogDiv);
 	document.body.removeChild(this.modalDiv);
 

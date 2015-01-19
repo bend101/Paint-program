@@ -1,4 +1,4 @@
-function ShapeDrawable(startX,startY,lineWidth,foregroundColour,backgroundColour,isRect,isCircle)
+function ShapeDrawable(startX,startY,lineWidth,foregroundColour,backgroundColour,isRect,isCircle, isFill)
 {
 	this.startX=startX;
 	this.startY=startY;
@@ -9,6 +9,7 @@ function ShapeDrawable(startX,startY,lineWidth,foregroundColour,backgroundColour
 	this.isRect=isRect;
 	this.isCircle=isCircle;
 	this.lineWidth=lineWidth;
+	this.isFill=isFill;
 }
 
 ShapeDrawable.prototype.setEndPosition=function(x,y)
@@ -38,6 +39,15 @@ ShapeDrawable.prototype.draw=function(canvas)
 		}
 		context.arc((this.startX+this.endX)/2, (this.startY+this.endY)/2,radius , 0, 2 * Math.PI, false);
 	}
-	context.stroke();
+	if (this.isFill!==true)
+	{
+		context.stroke();
+	}
+	if (this.isFill===true)
+	{
+		context.fillStyle=this.backgroundColour;
+		context.fill();
+
+	}
 
 }

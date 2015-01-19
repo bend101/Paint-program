@@ -57,12 +57,6 @@ function TextOptionsPanel(textTool)
 		'	Rotation'+
 		'	<div style="display: inline-block;">'+
 		'		<select id="Rotation" class="dropDownBox">'+
-			'	<option>0</option>'+
-			'	<option>10</option>'+
-			'	<option>20</option>'+
-			'	<option>30</option>'+
-			'	<option>40</option>'+
-			'	<option>90</option>'+
 		'		</select>'+
 		'	</div>'+
 		'</div>';
@@ -80,7 +74,22 @@ function TextOptionsPanel(textTool)
 	this.fontDropDownBox.addEventListener("change",this.onFontChange.bind(this));
 
 	this.rotationDropDownBox=this.containerDiv.querySelector("#Rotation");
+	this.addOptionsToSelect();
 	this.rotationDropDownBox.addEventListener("change",this.onRotationChange.bind(this));
+
+
+
+}
+
+TextOptionsPanel.prototype.addOptionsToSelect=function()
+{
+	for(var i=0;i<360;i=i+10)
+	{
+		var opt = document.createElement('option');
+		opt.value = i;
+		opt.innerHTML = i;
+		this.rotationDropDownBox.appendChild(opt);
+	}
 }
 
 TextOptionsPanel.prototype.getElement=function()

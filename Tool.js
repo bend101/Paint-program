@@ -37,7 +37,14 @@ Tool.prototype.setSelected=function(selected)
 {
 	if (selected===true)
 	{
-		this.paintProgram.getCanvas().style.cursor="url(" +this.cursor+")0 25,auto";
+		if (this.cursor!=="text")
+		{
+			this.paintProgram.getCanvas().style.cursor = "url(" + this.cursor + ")0 25,auto";
+		}
+		else
+		{
+			this.paintProgram.getCanvas().style.cursor = "text";
+		}
 		this.toolDiv.style.outline = "blue solid";
 	}
 	else

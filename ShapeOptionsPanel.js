@@ -10,26 +10,31 @@ function ShapeOptionsPanel()
 			'		<span class="stroke-fill-span">Circle</span>' +
 			'<input type="checkbox" id="checkCircle">'+
 			'	</div>'+
-		'	Line Width'+
-		'	<div style="display: inline-block;">'+
-		'		<select id="dropDownBox" class="dropDownBox">'+
-		'			<option value="1">1</option>'+
-		'			<option value="2">2</option>'+
-		'			<option value="3">3</option>'+
-		'			<option value="4">4</option>'+
-		'			<option value="5">5</option>'+
-		'			<option value="6">6</option>'+
-		'			<option value="7">7</option>'+
-		'			<option value="8">8</option>'+
-		'			<option value="9">9</option>'+
-		'			<option value="10">10</option>'+
-		'		</select>'+
+		'	<div class="containerLineWidth">'+
+			'	Line Width'+
+			'	<div style="display: inline-block;">'+
+			'		<select id="dropDownBox" class="dropDownBox">'+
+			'			<option value="1">1</option>'+
+			'			<option value="2">2</option>'+
+			'			<option value="3">3</option>'+
+			'			<option value="4">4</option>'+
+			'			<option value="5">5</option>'+
+			'			<option value="6">6</option>'+
+			'			<option value="7">7</option>'+
+			'			<option value="8">8</option>'+
+			'			<option value="9">9</option>'+
+			'			<option value="10">10</option>'+
+			'		</select>'+
+			'	</div>'+
+		'	</div>'+
+		'	<div class="containerFill">'+
+			'		<span class="fillSpan">Fill</span>' +
+			'<input type="checkbox" id="checkFill">'+
 		'	</div>'+
 		'</div>';
 	this.checkboxRect=this.containerDiv.querySelector("#checkRect");
 	this.checkboxCircle=this.containerDiv.querySelector("#checkCircle");
-
-
+	this.checkBoxFill=this.containerDiv.querySelector("#checkFill");
 	this.dropDownBox=this.containerDiv.querySelector(".dropDownBox");
 }
 
@@ -42,6 +47,12 @@ ShapeOptionsPanel.prototype.isRect=function()
 {
 	return this.checkboxRect.checked;
 }
+
+ShapeOptionsPanel.prototype.isFill=function()
+{
+	return this.checkBoxFill.checked;
+}
+
 
 ShapeOptionsPanel.prototype.isCircle=function()
 {
