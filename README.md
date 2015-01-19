@@ -17,7 +17,7 @@ it. It is created in a way whereby adding new tools wouldn't be to difficult to 
     2. shape tool with rectangle, circle, line width and fill options.
     3. text tool with options to change font, font size and rotation of text.
 
-[Click here to try](https://cdn.rawgit.com/bend101/Paint-program/master/Paint Program.html)
+[Click here to try](https://rawgit.com/bend101/Paint-program/master/Paint Program.html)
 
 
 
