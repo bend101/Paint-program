@@ -49,9 +49,6 @@ DrawingArea.prototype.resizeCanvas=function(width,height,transparent)
 
 	}
 
-
-
-
 }
 
 DrawingArea.prototype.copyToBackgroundCanvas=function()

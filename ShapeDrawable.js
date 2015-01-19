@@ -47,7 +47,6 @@ ShapeDrawable.prototype.draw=function(canvas)
 	{
 		context.fillStyle=this.backgroundColour;
 		context.fill();
-
 	}
 
 }

@@ -46,11 +46,6 @@ function PaintProgram()
 
 	this.mainDiv.appendChild(this.drawingArea.getElement());
 }
-//
-//PaintProgram.prototype.onChangeInColourBar=function(colour)
-//{
-//	this.foregroundColour=colour;
-//}
 
 PaintProgram.prototype.onUndoClick=function(event)
 {

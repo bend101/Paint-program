@@ -58,5 +58,4 @@ LineDrawable.prototype.draw=function(canvas)
 		context.fill();
 	}
 
-
 }

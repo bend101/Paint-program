@@ -54,11 +54,6 @@ ColourPicker.prototype.onOpacityChange=function(percentage)
 	this.colourObject.a=percentageAsDecimal;
 	this.smallDivColour.style.backgroundColor=this.colourObject.convertToString();
 }
-//
-//ColourPicker.rgbToString=function(r,g,b,a)
-//{
-//	return "rgba("+r+","+g+","+b+","+a+")";
-//}
 
 ColourPicker.prototype.getElement=function()
 {

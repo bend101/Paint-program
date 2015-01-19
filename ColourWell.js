@@ -51,7 +51,6 @@ ColourWell.prototype.onColourWellDoubleClick=function()
 {
 	console.log("hello");
 	var dialog=new ColourPickerDialog(this.onDialogClose.bind(this),this.colourObject);
-//	document.body.appendChild(dialog);
 }
 
 ColourWell.prototype.onDialogClose=function(dialog,returnCode)

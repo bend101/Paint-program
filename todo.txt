@@ -1,6 +1,0 @@
-# pass through colour to dialog
-# different shapes
-# use more innerhtml in options
-# checkerboard background for colourwell
-# checkerboard behind canvas
-

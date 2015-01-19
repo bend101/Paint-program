@@ -33,9 +33,6 @@
     display: inline-block;
     height: 20px;
     width: 60px;
-    /*border: 1px inset #808080;*/
-    /*margin: 5px;*/
-    /*color: #CACACC;*/
     margin-left: 19px;
     margin-top: 2px;
 }
@@ -47,9 +44,6 @@
     height: 69px;
     color: #CACACC;
 }
-
-
-
 
 .optionsImage{
     position: absolute;
@@ -65,7 +59,6 @@
     margin-right: 5px;
     margin-left: 4px;
     width: 75px;
-
 }
 
 .containerLineWidth{
@@ -196,7 +189,6 @@ display: inline-block;
 
 .toolDiv{
     display: inline-block;
-    /*height: 20px;*/
     width: 67px;
     border: 1px inset #808080;
     margin: 5px;
